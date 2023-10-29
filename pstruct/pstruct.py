@@ -20,6 +20,7 @@ support = [
     "UVM_MAP_EXTERNAL_ALLOCATION_PARAMS",
     "UVM_REGISTER_GPU_PARAMS",
     "UVM_REGISTER_GPU_VASPACE_PARAMS",
+    "UVM_VALIDATE_VA_RANGE_PARAMS",
 ]
 
 import clang.cindex as ci

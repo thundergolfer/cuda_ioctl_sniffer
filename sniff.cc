@@ -591,7 +591,7 @@ int ioctl(int filedes, unsigned long request, void *argp) {
           break;
         }
         case UVM_VALIDATE_VA_RANGE: {
-          printf("UNPARSED UVM_VALIDATE_VA_RANGE 0x%x %d\n", request, request);
+          pprint((UVM_VALIDATE_VA_RANGE_PARAMS *)argp);
         }
         case UVM_MAP_DYNAMIC_PARALLELISM_REGION: {
           printf("UNPARSED UVM_MAP_DYNAMIC_PARALLELISM_REGION 0x%x %d\n", request, request);

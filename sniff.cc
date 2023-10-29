@@ -132,7 +132,9 @@ static void handler(int sig, siginfo_t *si, void *unused) {
   // NOTE: OpenCL reads from 0x80 and 0x84
   uint64_t addr = (uint64_t)si->si_addr-(uint64_t)fake+(uint64_t)real;
   if (!is_load && (addr & 0xFF) == 0x90) {
-    hook(addr, rdx);
+    // TODO(Jonathon): Currently get a segmentation fault on basic CUDA programs
+    // if this `hook` fn runs. Commenting out for now.
+    // hook(addr, rdx);
   } else {
     printf("non hook handler at rip %p with addr %p\n", rip, (uint64_t)si->si_addr-(uint64_t)fake);
   }

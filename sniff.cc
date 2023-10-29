@@ -3,6 +3,7 @@
 #include <cassert>
 #include <errno.h>
 #include <cstring>
+#include <string>
 #include <stdint.h>
 #include <dlfcn.h>
 #include <sys/mman.h>

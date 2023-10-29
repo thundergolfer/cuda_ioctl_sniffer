@@ -370,6 +370,7 @@ int ioctl(int filedes, unsigned long request, void *argp) {
           cls(NV01_DEVICE_0);
           cls(NV01_EVENT_OS_EVENT);
           cls(NV20_SUBDEVICE_0);
+          cls(NV_CONFIDENTIAL_COMPUTE);
           cls(TURING_USERMODE_A);
           cls(FERMI_VASPACE_A);
           cls(KEPLER_CHANNEL_GROUP_A);

@@ -514,24 +514,18 @@ int ioctl(int filedes, unsigned long request, void *argp) {
           pprint((UVM_INITIALIZE_PARAMS *)argp);
           break;
         }
-        case UVM_PAGEABLE_MEM_ACCESS: {
-          UVM_PAGEABLE_MEM_ACCESS_PARAMS *p = (UVM_PAGEABLE_MEM_ACCESS_PARAMS *)argp;
-          printf("UVM_PAGEABLE_MEM_ACCESS_PARAMS pageableMemAccess:%x rmStatus:%x\n", p->pageableMemAccess, p->rmStatus);
-          break;
-        }
-        case UVM_REGISTER_GPU: {
-          /*UVM_REGISTER_GPU_PARAMS *p = (UVM_REGISTER_GPU_PARAMS *)argp;
-          printf("UVM_REGISTER_GPU gpu_uuid:%x %x %x %x %x %x %x %x rmCtrlFd:%x hClient:%x hSmcPartRef:%x rmStatus:%x\n",
-            p->gpu_uuid.uuid[0], p->gpu_uuid.uuid[1], p->gpu_uuid.uuid[2], p->gpu_uuid.uuid[3],
-            p->gpu_uuid.uuid[4], p->gpu_uuid.uuid[5], p->gpu_uuid.uuid[6], p->gpu_uuid.uuid[7],
-            p->rmCtrlFd, p->hClient, p->hSmcPartRef, p->rmStatus);*/
-          pprint((UVM_REGISTER_GPU_PARAMS *)argp);
-          break;
-        }
         case UVM_CREATE_RANGE_GROUP: {
           /*UVM_CREATE_RANGE_GROUP_PARAMS *p = (UVM_CREATE_RANGE_GROUP_PARAMS *)argp;
           printf("UVM_CREATE_RANGE_GROUP rangeGroupId: %llx rmStatus: %x\n", p->rangeGroupId, p->rmStatus);*/
           pprint((UVM_CREATE_RANGE_GROUP_PARAMS *)argp);
+          break;
+        }
+        case UVM_DESTROY_RANGE_GROUP: {
+          pprint((UVM_DESTROY_RANGE_GROUP_PARAMS *)argp);
+          break;
+        }
+        case UVM_DISABLE_READ_DUPLICATION: {
+          pprint((UVM_DISABLE_READ_DUPLICATION_PARAMS *)argp);
           break;
         }
         case UVM_MAP_EXTERNAL_ALLOCATION: {
@@ -552,6 +546,20 @@ int ioctl(int filedes, unsigned long request, void *argp) {
             );
           }*/
           pprint((UVM_MAP_EXTERNAL_ALLOCATION_PARAMS *)argp);
+          break;
+        }
+        case UVM_PAGEABLE_MEM_ACCESS: {
+          UVM_PAGEABLE_MEM_ACCESS_PARAMS *p = (UVM_PAGEABLE_MEM_ACCESS_PARAMS *)argp;
+          printf("UVM_PAGEABLE_MEM_ACCESS_PARAMS pageableMemAccess:%x rmStatus:%x\n", p->pageableMemAccess, p->rmStatus);
+          break;
+        }
+        case UVM_REGISTER_GPU: {
+          /*UVM_REGISTER_GPU_PARAMS *p = (UVM_REGISTER_GPU_PARAMS *)argp;
+          printf("UVM_REGISTER_GPU gpu_uuid:%x %x %x %x %x %x %x %x rmCtrlFd:%x hClient:%x hSmcPartRef:%x rmStatus:%x\n",
+            p->gpu_uuid.uuid[0], p->gpu_uuid.uuid[1], p->gpu_uuid.uuid[2], p->gpu_uuid.uuid[3],
+            p->gpu_uuid.uuid[4], p->gpu_uuid.uuid[5], p->gpu_uuid.uuid[6], p->gpu_uuid.uuid[7],
+            p->rmCtrlFd, p->hClient, p->hSmcPartRef, p->rmStatus);*/
+          pprint((UVM_REGISTER_GPU_PARAMS *)argp);
           break;
         }
         case UVM_REGISTER_CHANNEL: {
@@ -582,10 +590,14 @@ int ioctl(int filedes, unsigned long request, void *argp) {
           pprint((UVM_FREE_PARAMS *)argp);
           break;
         }
+        case UVM_VALIDATE_VA_RANGE: {
+          printf("UNPARSED UVM_VALIDATE_VA_RANGE 0x%x %d\n", request, request);
+        }
+        case UVM_MAP_DYNAMIC_PARALLELISM_REGION: {
+          printf("UNPARSED UVM_MAP_DYNAMIC_PARALLELISM_REGION 0x%x %d\n", request, request);
+        }
         default: {
-          // UVM_MAP_DYNAMIC_PARALLELISM_REGION
           // UVM_ALLOC_SEMAPHORE_POOL
-          // UVM_VALIDATE_VA_RANGE
           printf("UNPARSED UVM IOCTL 0x%x %d\n", request, request);
           break;
         }
